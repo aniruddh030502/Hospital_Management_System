@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Slots Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slots-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 600px;
+        }
+        .slot {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="slot_jenny" >
+    <div class="slots-container">
+        <h2>Doctor Slots for the Next 7 Days</h2>
+        
+        <!-- More slots for the next 7 days and other doctor can be added here -->
+   
+        <button id="bookSlotsButton">Book Selected Slots</button>
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slotsContainer = document.querySelector('.slots-container');
+            const today = new Date();
+            const daysInAdvance = 7;
+
+            for (let i = 0; i < daysInAdvance; i++) {
+                const slotDate = new Date(today);
+                slotDate.setDate(today.getDate() + i);
+
+                const slotElement = document.createElement('div');
+                slotElement.classList.add('slot');
+
+                const doctorName = 'Dr. Jenny'; // Replace with actual doctor name
+                const slotHTML = `
+                    <div>
+                        <strong>Doctor: ${doctorName}</strong>
+                        <p>Date: ${slotDate.toDateString()}</p>
+                        <p>Time: 10:00 AM - 11:00 AM</p>
+                    </div>
+                    <input type="radio" class="doctor-radio" name="slot" value="${slotDate}${doctorName}">
+                `;
+
+                slotElement.innerHTML = slotHTML;
+                slotsContainer.appendChild(slotElement);
+            }
+
+            const radios = document.querySelectorAll('.doctor-radio');
+            let selectedDoctors = [];
+
+            radios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    const doctor = radio.value;
+                    if (radio.checked) {
+                        selectedDoctors.push(doctor);
+                    } else {
+                        selectedDoctors = selectedDoctors.filter(d => d !== doctor);
+                    }
+                    console.log('Selected Doctors:', selectedDoctors);
+                });
+            });
+        });
+        
+    </script>
+</body>
+</html>

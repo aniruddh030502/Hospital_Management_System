@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Services</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin: 50px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .doctor-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .doctor-option {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue color, you can change it */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .doctor-option:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+
+        .service-link {
+            margin-top: 30px;
+            display: block;
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose a Doctor Specialty</h1>
+        <div class="doctor-options">
+            <a href="cardiodoc" class="doctor-option">Cardiology</a>
+            <a href="entdoc" class="doctor-option">ENT</a>
+            <a href="paedidoc" class="doctor-option">Pediatrician</a>
+            <a href="orthodoc" class="doctor-option">Orthopaedic</a>
+            <a href="gynaedoc" class="doctor-option">Gynaecology</a>
+        </div>
+        <a href="bed_details" class="service-link">View Bed Details</a>
+        <a href="bed_apply" class="service-link">Apply for a Bed</a>
+    </div>
+</body>
+</html>
+
