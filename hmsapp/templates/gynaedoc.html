@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Slots</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slots-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 80%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .slot-checkbox {
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="slots-container" >
+        <h2>Doctor Availability Slots  </h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Doctor</th>
+                    <th>Time Slot</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody id="slotTableBody">
+                <!-- Slots will be dynamically added here -->
+            </tbody>
+        </table>
+        <button id="bookSlotsButton">Book Selected Slots</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slotTableBody = document.getElementById('slotTableBody');
+            const bookSlotsButton = document.getElementById('bookSlotsButton');
+            const today = new Date();
+            const daysInAdvance = 7;
+
+            for (let i = 0; i < daysInAdvance; i++) {
+                const slotDate = new Date(today);
+                slotDate.setDate(today.getDate() + i);
+
+                const newRow = slotTableBody.insertRow();
+
+                const doctorName1 = 'Dr. Smith'; // Replace with actual doctor name
+                const doctorName2 = 'Dr. Robert';
+                const dateCell = newRow.insertCell();
+                dateCell.textContent = slotDate.toDateString();
+
+                const doctorCell = newRow.insertCell();
+                doctorCell.textContent = doctorName2;
+              
+
+                const timeSlotCell = newRow.insertCell();
+                timeSlotCell.textContent = '10:00 AM - 11:00 AM';
+
+                const selectCell = newRow.insertCell();
+                selectCell.className = 'slot-checkbox';
+                selectCell.innerHTML = `<input type="checkbox" name="slot" value="slot${i}">`;
+            }
+
+            bookSlotsButton.addEventListener('click', () => {
+                const selectedSlots = Array.from(document.querySelectorAll('input[name="slot"]:checked'))
+                                       .map(checkbox => checkbox.value);
+                console.log(selectedSlots);
+                // Here you can perform further actions with the selected slots
+              
+            });
+        });
+        
+    </script>
+</body>
+</html>

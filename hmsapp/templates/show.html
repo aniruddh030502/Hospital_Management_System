@@ -1,0 +1,10 @@
+<html>
+    <body>
+        <table>
+            <tr><td>Name</td><td>Email</td><td>password</td></tr>
+            {% for i in a %}
+            <tr><td>{{i.name}}</td><td>{{i.email}}</td><td>{{i.pwd}}</td></tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
